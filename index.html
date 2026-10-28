@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ermi Welding - Professional Metalwork in Adama</title>
+    <meta name="description" content="Ermi Welding at Adama Asala Bus Station: gate doors, doors and windows, handrails, and custom metal tables and beds. Quality products at good prices.">
+    <meta name="theme-color" content="#121212">
+    <!-- Safe CSP subset: blocks plugins, base-tag hijacking, and form posts to other sites -->
+    <meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ff6600'/%3E%3Ctext x='50' y='66' font-size='46' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EEW%3C/text%3E%3C/svg%3E">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#121212',
+                        cardBg: '#1e1e1e',
+                        accent: '#ff6600',
+                        accentHover: '#e05a00',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans Ethiopic', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f3f4f6;
+            font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+        }
+        html, body { overflow-x: hidden; }
+        section[id] { scroll-margin-top: 5rem; }
+        .glow-orange {
+            box-shadow: 0 0 25px rgba(255, 102, 0, 0.25);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('images/gates/gate-01.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 min-h-screen flex flex-col selection:bg-accent selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-darkBg/95 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-accent flex items-center justify-center text-white font-black text-xl shadow-lg glow-orange transition-transform group-hover:scale-105">
+                    EW
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-wider block text-white" data-en="ERMI WELDING" data-am="ኤርሚ ብረታብረት">ERMI WELDING</span>
+                    <span class="text-xs font-semibold text-accent tracking-widest block" data-en="ADAMA ASALA BUS STATION" data-am="አዳማ፣ አሰላ መናኸሪያ">ADAMA ASALA BUS STATION</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav & Language Switcher -->
+            <div class="hidden md:flex items-center gap-8">
+                <nav class="flex items-center gap-6 font-medium text-sm text-gray-300">
+                    <a href="#services" class="hover:text-accent transition-colors" data-en="Services" data-am="አገልግሎቶች">Services</a>
+                    <a href="#gallery" class="hover:text-accent transition-colors" data-en="Gallery" data-am="ስራዎቻችን">Gallery</a>
+                    <a href="#about" class="hover:text-accent transition-colors" data-en="About Us" data-am="ስለ እኛ">About Us</a>
+                    <a href="#contact" class="hover:text-accent transition-colors" data-en="Contact" data-am="ያግኙን">Contact</a>
+                </nav>
+                <button id="langToggleBtn" onclick="toggleLanguage()" class="flex items-center gap-2 bg-cardBg border border-gray-700 hover:border-accent px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm">
+                    <i class="fa-solid fa-globe text-accent"></i>
+                    <span id="langText">አማርኛ / EN</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center gap-3 md:hidden">
+                <button onclick="toggleLanguage()" aria-label="Change language" class="bg-cardBg border border-gray-700 px-4 py-3 rounded-lg text-sm font-semibold">
+                    <span id="langTextMobile">አማርኛ</span>
+                </button>
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" class="text-gray-300 hover:text-white w-11 h-11 flex items-center justify-center text-xl">
+                    <i id="menuIcon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-cardBg border-b border-gray-800 px-4 pt-2 pb-4 space-y-3">
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-accent py-3 font-medium" data-en="Services" data-am="አገልግሎቶች">Services</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-accent py-3 font-medium" data-en="Gallery" data-am="ስራዎቻችን">Gallery</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-accent py-3 font-medium" data-en="About Us" data-am="ስለ እኛ">About Us</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-accent py-3 font-medium" data-en="Contact" data-am="ያግኙን">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg relative flex-grow flex items-center justify-center py-20 lg:py-32 border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 text-center z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent font-semibold text-xs sm:text-sm mb-6 uppercase tracking-wider">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span data-en="Adama Asala Bus Station Workshop" data-am="አዳማ አሰላ መናኸሪያ ዎርክሾፕ">Adama Asala Bus Station Workshop</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                <span class="block text-white" data-en="Precision Metalwork & Design" data-am="ዘመናዊ እና ጥራት ያላቸው የብረት ስራዎች">Precision Metalwork & Design</span>
+                <span class="text-accent mt-2 block" data-en="Better Products at Good Prices" data-am="ጥራት ያላቸው ምርቶች በተመጣጣኝ ዋጋ">Better Products at Good Prices</span>
+            </h1>
+            <p class="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light" data-en="Strong, beautiful metalwork made with care in Adama: gate doors, handrails, doors & windows, and custom tables and beds. Built to last, priced fairly." data-am="በአዳማ በጥንቃቄ የተሰሩ ጠንካራ እና ውብ የብረት ስራዎች፦ የግቢ በሮች፣ የደረጃ እጀታዎች፣ በሮች እና መስኮቶች፣ እንዲሁም ልዩ ጠረጴዛዎች እና አልጋዎች። ለረጅም ጊዜ የሚያገለግሉ፣ በተመጣጣኝ ዋጋ።">
+                Strong, beautiful metalwork made with care in Adama: gate doors, handrails, doors & windows, and custom tables and beds. Built to last, priced fairly.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#gallery" class="w-full sm:w-auto bg-accent hover:bg-accentHover text-white font-bold px-8 py-4 rounded-xl shadow-lg glow-orange transition-all text-center" data-en="Explore Our Work" data-am="ስራዎቻችንን ይመልከቱ">
+                    Explore Our Work
+                </a>
+                <a href="#contact" class="w-full sm:w-auto bg-cardBg hover:bg-gray-800 border border-gray-700 text-white font-bold px-8 py-4 rounded-xl transition-all text-center" data-en="Get a Quote" data-am="ዋጋ ይጠይቁ">
+                    Get a Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-darkBg border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-en="Our Professional Services" data-am="የምንሰጣቸው ሙያዊ አገልግሎቶች">Our Professional Services</h2>
+                <p class="text-gray-400 text-base" data-en="Crafting durable metalwork solutions tailored for your residential and commercial spaces." data-am="ለቤት እና ለንግድ ቦታዎች የሚሆኑ ጥንካሬያቸው የጠበቀ የብረት ስራዎች።">Crafting durable metalwork solutions tailored for your residential and commercial spaces.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-6 transition-all hover:border-accent/60 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-2xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-door-closed"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="Gate Doors" data-am="የግቢ በሮች (Gate Doors)">Gate Doors</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-en="Heavy-duty compound and vehicle gate doors built with laser-cut precision and robust steel." data-am="በሌዘር የተሰሩ ውብ እና ጠንካራ የግቢ በሮች።">Heavy-duty compound and vehicle gate doors built with laser-cut precision and robust steel.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-6 transition-all hover:border-accent/60 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-2xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-house-chimney-window"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="Doors & Windows" data-am="በሮች እና መስኮቶች">Doors & Windows</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-en="Secure exterior doors and protective window grills designed for maximum safety and style." data-am="ለቪላ እና ለተለያዩ ቤቶች የሚሆኑ አስተማማኝ በሮች እና መስኮቶች።">Secure exterior doors and protective window grills designed for maximum safety and style.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-6 transition-all hover:border-accent/60 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-2xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-stairs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="Handrails" data-am="የደረጃ እጀታዎች (Handrails)">Handrails</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-en="Sturdy staircase railings and balcony guards engineered for safety and elegance." data-am="ለደረጃ እና በረንዳ የሚያገለግሉ ጥንካሬያቸው የጠበቀ የብረት እጀታዎች።">Sturdy staircase railings and balcony guards engineered for safety and elegance.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-6 transition-all hover:border-accent/60 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-2xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-en="Custom Metalwork (Tables & Beds)" data-am="ልዩ የብረት ስራዎች (ጠረጴዛ እና አልጋ)">Custom Metalwork (Tables & Beds)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-en="Customized metal furniture including luxury nest tables, epoxy center tables, and sturdy steel beds." data-am="ዘመናዊ የብረት አልጋዎች፣ የቡና ጠረጴዛዎች እና ሌሎችም የቤት እቃዎች።">Customized metal furniture including luxury nest tables, epoxy center tables, and sturdy steel beds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section with Filter Tabs -->
+    <section id="gallery" class="py-20 bg-darkBg border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-en="Our Portfolio Showcase" data-am="የስራዎቻችን ማሳያ">Our Portfolio Showcase</h2>
+                <p class="text-gray-400 text-base" data-en="Explore our completed projects from our workshop in Adama." data-am="በአዳማ ወርክሾፓችን የተሰሩ ስራዎችን ይመልከቱ።">Explore our completed projects from our workshop in Adama.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div id="galleryFilters" class="flex flex-wrap items-center justify-center gap-3 mb-12">
+                <button data-filter="all" class="gallery-filter-btn bg-accent text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all" data-en="All Works" data-am="ሁሉም">All Works</button>
+                <button data-filter="gates" class="gallery-filter-btn bg-cardBg hover:bg-gray-800 border border-gray-700 text-gray-300 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all" data-en="Gate Doors" data-am="የግቢ በሮች">Gate Doors</button>
+                <button data-filter="doors" class="gallery-filter-btn bg-cardBg hover:bg-gray-800 border border-gray-700 text-gray-300 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all" data-en="Doors & Windows" data-am="በሮች እና መስኮቶች">Doors & Windows</button>
+                <button data-filter="handrails" class="gallery-filter-btn bg-cardBg hover:bg-gray-800 border border-gray-700 text-gray-300 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all" data-en="Handrails" data-am="የደረጃ እጀታዎች">Handrails</button>
+                <button data-filter="custom" class="gallery-filter-btn bg-cardBg hover:bg-gray-800 border border-gray-700 text-gray-300 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all" data-en="Custom Furniture" data-am="የቤት እቃዎች">Custom Furniture</button>
+            </div>
+
+            <!-- Gallery Grid (filled by JavaScript from the local images folders) -->
+            <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+            <!-- Show More -->
+            <div class="text-center mt-12">
+                <button id="showMoreBtn" class="bg-cardBg hover:bg-gray-800 border border-gray-700 hover:border-accent text-white font-bold px-8 py-3.5 rounded-xl transition-all" data-en="Show More" data-am="ተጨማሪ ይመልከቱ">Show More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-darkBg border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent font-semibold text-xs mb-6 uppercase tracking-wider">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span data-en="Adama Asala Bus Station" data-am="አዳማ፣ አሰላ መናኸሪያ">Adama Asala Bus Station</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-6 leading-tight" data-en="About Ermi Welding" data-am="ስለ ኤርሚ ብረታብረት ስራዎች">About Ermi Welding</h2>
+                    <p class="text-gray-300 mb-4 leading-relaxed text-base" data-en="At Ermi Welding, we turn steel into things people trust every day: strong gates that protect your home, handrails that keep your family safe, doors and windows built to last, and custom tables and beds made to your taste. Our workshop is at Adama Asala Bus Station (አዳማ፣ አሰላ መናኸሪያ)." data-am="በኤርሚ ብረታብረት ብረትን ሰዎች በየቀኑ የሚተማመኑባቸው ነገሮች እናደርጋለን፦ ቤትዎን የሚጠብቁ ጠንካራ የግቢ በሮች፣ ቤተሰብዎን ከአደጋ የሚጠብቁ የደረጃ እጀታዎች፣ ለረጅም ጊዜ የሚያገለግሉ በሮች እና መስኮቶች፣ እንዲሁም በፍላጎትዎ የሚሰሩ ጠረጴዛዎች እና አልጋዎች። ወርክሾፓችን በአዳማ፣ አሰላ መናኸሪያ ይገኛል።">
+                        At Ermi Welding, we turn steel into things people trust every day: strong gates that protect your home, handrails that keep your family safe, doors and windows built to last, and custom tables and beds made to your taste. Our workshop is at Adama Asala Bus Station (አዳማ፣ አሰላ መናኸሪያ).
+                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-base" data-en="Welding is more than a job for us; it is a craft we take pride in. Every piece is measured, cut and welded with care, because we want you to be proud of it for years. Good work should not cost a fortune, so we keep our prices fair. Your order can be made at our workshop, or we can come to your place, and we welcome partners to work with us on projects." data-am="ብየዳ ለእኛ ከስራ በላይ ነው፤ በኩራት የምንሰራው ሙያ ነው። እያንዳንዱ ስራ በጥንቃቄ ተለክቶ፣ ተቆርጦ እና ተበይዶ ይሰራል፤ ምክንያቱም ለዓመታት የሚኮሩበት ስራ እንዲኖርዎ እንፈልጋለን። ጥሩ ስራ ውድ መሆን የለበትም፤ ስለዚህ ዋጋችን ተመጣጣኝ ነው። ትዕዛዝዎ በወርክሾፓችን ሊሰራ ይችላል፤ ወይም ወደ እርስዎ ቦታ መጥተን መስራት እንችላለን። ከአጋሮች ጋር በጋራ ለመስራትም ክፍት ነን።">
+                        Welding is more than a job for us; it is a craft we take pride in. Every piece is measured, cut and welded with care, because we want you to be proud of it for years. Good work should not cost a fortune, so we keep our prices fair. Your order can be made at our workshop, or we can come to your place, and we welcome partners to work with us on projects.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-cardBg border border-gray-800 p-4 rounded-xl">
+                            <span class="block text-3xl font-extrabold text-accent mb-1" data-en="Strong" data-am="ጠንካራ">Strong</span>
+                            <span class="text-sm text-gray-400" data-en="Built to last, fair prices" data-am="ለረጅም ጊዜ የሚያገለግል፣ ተመጣጣኝ ዋጋ">Built to last, fair prices</span>
+                        </div>
+                        <div class="bg-cardBg border border-gray-800 p-4 rounded-xl">
+                            <span class="block text-3xl font-extrabold text-accent mb-1" data-en="Custom" data-am="ልዩ">Custom</span>
+                            <span class="text-sm text-gray-400" data-en="Made to your size and taste" data-am="በእርስዎ ልኬት እና ፍላጎት የሚሰራ">Made to your size and taste</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-accent to-orange-600 rounded-3xl blur-lg opacity-30"></div>
+                    <div class="relative bg-cardBg border border-gray-800 rounded-2xl p-8 space-y-6">
+                        <h3 class="text-2xl font-bold text-white mb-4" data-en="Why Choose Ermi Welding?" data-am="ለምን ኤርሚ ብረታብረት ይምረጡ?">Why Choose Ermi Welding?</h3>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white" data-en="Prime Location" data-am="ምቹ መገኛ ቦታ">Prime Location</h4>
+                                <p class="text-sm text-gray-400" data-en="Easily accessible at Asala Bus Station in Adama." data-am="በአዳማ አሰላ መናኸሪያ አቅራቢያ በቀላሉ ሊያገኙን ይችላሉ።">Easily accessible at Asala Bus Station in Adama.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white" data-en="Better Products at Good Prices" data-am="ጥራት ያለው ምርት በግሩም ዋጋ">Better Products at Good Prices</h4>
+                                <p class="text-sm text-gray-400" data-en="High-end craftsmanship that fits your budget." data-am="ከኪስዎ ጋር የሚስማማ እና የዘለቀ ጥራት ያለው ስራ።">High-end craftsmanship that fits your budget.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white" data-en="Custom Orders Welcome" data-am="ልዩ ትዕዛዞችን እንቀበላለን">Custom Orders Welcome</h4>
+                                <p class="text-sm text-gray-400" data-en="Bespoke beds, tables, gates, and handrails made to order." data-am="የሚፈልጉትን አልጋ፣ ጠረጴዛ ወይም በር በሰዓቱ እንሰራለን።">Bespoke beds, tables, gates, and handrails made to order.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ways to work with us -->
+            <div class="mt-20">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold mb-3" data-en="Flexible Ways to Work With Us" data-am="ከእኛ ጋር የሚሰሩባቸው መንገዶች">Flexible Ways to Work With Us</h3>
+                    <p class="text-gray-400 text-base" data-en="Choose what suits you. We work at our place, at your place, or together with partners." data-am="የሚስማማዎትን ይምረጡ። በእኛ ቦታ፣ በእርስዎ ቦታ ወይም ከአጋሮች ጋር በጋራ እንሰራለን።">Choose what suits you. We work at our place, at your place, or together with partners.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-cardBg border border-gray-800 rounded-2xl p-6 transition-all hover:border-accent/60">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-xl mb-5">
+                            <i class="fa-solid fa-industry"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2" data-en="Work at Our Workshop" data-am="በወርክሾፓችን ይስሩ">Work at Our Workshop</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed" data-en="Bring your idea or design and we build it at our workshop at Adama Asala Bus Station." data-am="ሃሳብዎን ወይም ዲዛይንዎን ይዘው ይምጡ፤ በአዳማ አሰላ መናኸሪያ በሚገኘው ወርክሾፓችን እንሰራለን።">Bring your idea or design and we build it at our workshop at Adama Asala Bus Station.</p>
+                    </div>
+                    <div class="bg-cardBg border border-gray-800 rounded-2xl p-6 transition-all hover:border-accent/60">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-xl mb-5">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2" data-en="We Come to You" data-am="ወደ እርስዎ ቦታ እንመጣለን">We Come to You</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed" data-en="Prefer the work done at your place? We can come to your site and do the work there." data-am="ስራው በእርስዎ ቦታ እንዲሰራ ይፈልጋሉ? ወደ እርስዎ ቦታ መጥተን መስራት እንችላለን።">Prefer the work done at your place? We can come to your site and do the work there.</p>
+                    </div>
+                    <div class="bg-cardBg border border-gray-800 rounded-2xl p-6 transition-all hover:border-accent/60">
+                        <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-xl mb-5">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2" data-en="Partners Welcome" data-am="አጋሮች እንኳን ደህና መጡ">Partners Welcome</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed" data-en="We are open to working together with partners on projects. Contact us to talk." data-am="በፕሮጀክቶች ላይ ከአጋሮች ጋር በጋራ ለመስራት ክፍት ነን። ለመነጋገር ያግኙን።">We are open to working together with partners on projects. Contact us to talk.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <a href="#contact" class="inline-block w-full sm:w-auto bg-accent hover:bg-accentHover text-white font-bold px-8 py-4 rounded-xl shadow-lg glow-orange transition-all" data-en="Talk to Us About Your Work" data-am="ስለ ስራዎ ያነጋግሩን">Talk to Us About Your Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section id="contact" class="py-20 bg-darkBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" data-en="Get in Touch With Us" data-am="አሁኑኑ ያግኙን">Get in Touch With Us</h2>
+                <p class="text-gray-400 text-base" data-en="Visit us at Adama Asala Bus Station or contact us for orders and estimates." data-am="በአዳማ አሰላ መናኸሪያ ይጎብኙን ወይም በስልክ እና ቴሌግራም ያነጋግሩን።">Visit us at Adama Asala Bus Station or contact us for orders and estimates.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Contact Info Card -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 space-y-6 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-6" data-en="Contact Information" data-am="የመገኛ መረጃዎች">Contact Information</h3>
+                        <div class="space-y-5">
+                            <a href="tel:+251941708736" class="flex items-center gap-4 text-gray-300 hover:text-accent transition-colors group">
+                                <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-phone text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400 uppercase font-semibold" data-en="Phone Number" data-am="ስልክ ቁጥር">Phone Number</span>
+                                    <span class="font-bold text-white">+251 94 170 8736</span>
+                                </div>
+                            </a>
+
+                            <a href="https://t.me/fish4136" target="_blank" rel="noopener" class="flex items-center gap-4 text-gray-300 hover:text-accent transition-colors group">
+                                <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                                    <i class="fa-brands fa-telegram text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400 uppercase font-semibold" data-en="Telegram Channel" data-am="ቴሌግራም ቻናል">Telegram Channel</span>
+                                    <span class="font-bold text-white">@fish4136</span>
+                                </div>
+                            </a>
+
+                            <div class="flex items-center gap-4 text-gray-300">
+                                <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+                                    <i class="fa-solid fa-location-dot text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400 uppercase font-semibold" data-en="Location" data-am="አድራሻ">Location</span>
+                                    <span class="font-bold text-white" data-en="Adama Asala Bus Station (አዳማ፣ አሰላ መናኸሪያ)" data-am="አዳማ፣ አሰላ መናኸሪያ">Adama Asala Bus Station (አዳማ፣ አሰላ መናኸሪያ)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-800">
+                        <a href="https://t.me/fish4136" target="_blank" rel="noopener" class="w-full bg-accent hover:bg-accentHover text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg glow-orange transition-all text-center">
+                            <i class="fa-brands fa-telegram text-xl"></i>
+                            <span data-en="Chat on Telegram" data-am="በቴሌግራም ያነጋግሩን">Chat on Telegram</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Inquiry Form -->
+                <div class="bg-cardBg border border-gray-800 rounded-2xl p-8 lg:col-span-2">
+                    <h3 class="text-xl font-bold text-white mb-6" data-en="Send Us a Quick Message" data-am="መልእክት ይላኩልን">Send Us a Quick Message</h3>
+                    <form id="inquiryForm" action="https://formspree.io/f/xaeeorgn" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <input type="hidden" name="_subject" value="New inquiry from Ermi Welding website">
+                        <!-- Spam trap: real visitors never see or fill this -->
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-400 mb-2" data-en="Your Name" data-am="የእርስዎ ስም">Your Name</label>
+                                <input type="text" name="name" maxlength="80" autocomplete="name" required class="w-full bg-darkBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" data-ph-en="e.g. Abebe Kebede" data-ph-am="ምሳሌ፡ አበበ ከበደ" placeholder="e.g. Abebe Kebede">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-400 mb-2" data-en="Phone Number" data-am="ስልክ ቁጥር">Phone Number</label>
+                                <input type="tel" name="phone" maxlength="20" pattern="[+0-9 ()\-]{7,20}" inputmode="tel" autocomplete="tel" required class="w-full bg-darkBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" data-ph-en="e.g. +251 9... or 09..." data-ph-am="ምሳሌ፡ +251 9... ወይም 09..." placeholder="e.g. +251 9... or 09...">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-400 mb-2" data-en="Service Needed" data-am="የሚፈልጉት አገልግሎት">Service Needed</label>
+                            <select name="service" class="w-full bg-darkBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors">
+                                <option value="Gate Doors" data-en="Gate Doors" data-am="የግቢ በሮች">Gate Doors</option>
+                                <option value="Doors and Windows" data-en="Doors and Windows" data-am="በሮች እና መስኮቶች">Doors and Windows</option>
+                                <option value="Handrails" data-en="Handrails" data-am="የደረጃ እጀታዎች">Handrails</option>
+                                <option value="Custom Tables & Beds" data-en="Custom Tables & Beds" data-am="ልዩ ጠረጴዛ እና አልጋ ስራዎች">Custom Tables & Beds</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-400 mb-2" data-en="Message / Details" data-am="መልእክት / ዝርዝር መግለጫ">Message / Details</label>
+                            <textarea name="message" rows="4" maxlength="1500" required class="w-full bg-darkBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent transition-colors" data-ph-en="Describe your project requirements or dimensions..." data-ph-am="ስለ ስራው ዝርዝር ወይም ልኬት ይጻፉ..." placeholder="Describe your project requirements or dimensions..."></textarea>
+                        </div>
+                        <button id="submitBtn" type="submit" class="w-full bg-accent hover:bg-accentHover disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all" data-en="Send Inquiry" data-am="ጥያቄ ይላኩ">
+                            Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cardBg border-t border-gray-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white font-black text-lg">
+                    EW
+                </div>
+                <div>
+                    <span class="text-lg font-bold text-white block" data-en="ERMI WELDING" data-am="ኤርሚ ብረታብረት">ERMI WELDING</span>
+                    <span class="text-xs text-gray-400" data-en="Adama Asala Bus Station" data-am="አዳማ፣ አሰላ መናኸሪያ">Adama Asala Bus Station</span>
+                </div>
+            </div>
+            <p class="text-sm text-gray-500">
+                &copy; <span id="year"></span> Ermi Welding. <span data-en="All rights reserved." data-am="መብቱ በህግ የተጠበቀ ነው።">All rights reserved.</span>
+            </p>
+            <div class="flex items-center gap-4 text-xl">
+                <a href="https://t.me/fish4136" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-darkBg border border-gray-700 flex items-center justify-center text-gray-300 hover:text-accent hover:border-accent transition-all">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+                <a href="tel:+251941708736" class="w-10 h-10 rounded-xl bg-darkBg border border-gray-700 flex items-center justify-center text-gray-300 hover:text-accent hover:border-accent transition-all">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Message Box -->
+    <div id="toast" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm pointer-events-none z-50 transform translate-y-28 opacity-0 transition-all duration-300 bg-cardBg border border-accent text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-accent/20 text-accent flex items-center justify-center">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm" data-en="Success!" data-am="ተሳክቷል!">Success!</h4>
+            <p id="toastMsg" class="text-xs text-gray-300" data-en="Your message has been sent successfully." data-am="መልእክትዎ በተሳካ ሁኔታ ተልኳል።">Your message has been sent successfully.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript: Language Toggle, Gallery, Mobile Menu, Toast -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        /* ---------- Language ---------- */
+        let currentLang = 'en';
+        try {
+            const saved = localStorage.getItem('ermi-lang');
+            if (saved === 'am' || saved === 'en') currentLang = saved;
+        } catch (e) {}
+
+        function applyLanguage() {
+            document.documentElement.lang = currentLang;
+
+            document.getElementById('langText').textContent = currentLang === 'en' ? 'አማርኛ / EN' : 'English / AM';
+            document.getElementById('langTextMobile').textContent = currentLang === 'en' ? 'አማርኛ' : 'EN';
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const am = el.getAttribute('data-am');
+                if (am) el.textContent = currentLang === 'am' ? am : el.getAttribute('data-en');
+            });
+
+            document.querySelectorAll('[data-ph-en]').forEach(el => {
+                el.placeholder = currentLang === 'am' ? el.getAttribute('data-ph-am') : el.getAttribute('data-ph-en');
+            });
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'am' : 'en';
+            try { localStorage.setItem('ermi-lang', currentLang); } catch (e) {}
+            applyLanguage();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const open = menu.classList.toggle('hidden') === false;
+            document.getElementById('mobileMenuBtn').setAttribute('aria-expanded', open);
+            document.getElementById('menuIcon').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        }
+
+        /* ---------- Gallery ---------- */
+        // Folders and file names expected:
+        //   images/gates/gate-01.jpg ... gate-10.jpg
+        //   images/door-windows/door-window-01.jpg ... door-window-10.jpg
+        //   images/handrails/handrail-01.jpg ... handrail-10.jpg
+        //   images/custom/custom-01.jpg ... custom-04.jpg
+        const CATS = {
+            gates:     { folder: 'gates',        prefix: 'gate',        count: 10, en: 'Gate Door',        am: 'የግቢ በር' },
+            doors:     { folder: 'door-windows', prefix: 'door-window', count: 10, en: 'Door & Window',    am: 'በር እና መስኮት' },
+            handrails: { folder: 'handrails',    prefix: 'handrail',    count: 10, en: 'Handrail',         am: 'የደረጃ እጀታ' },
+            custom:    { folder: 'custom',       prefix: 'custom',      count: 4,  en: 'Custom Furniture', am: 'ልዩ የብረት ስራ' }
+        };
+
+        // Interleave categories so "All Works" shows a mix first
+        const galleryItems = [];
+        for (let n = 1; n <= 10; n++) {
+            for (const [key, c] of Object.entries(CATS)) {
+                if (n > c.count) continue;
+                const num = String(n).padStart(2, '0');
+                galleryItems.push({
+                    cat: key,
+                    src: `images/${c.folder}/${c.prefix}-${num}.jpg`,
+                    en: `${c.en} ${num}`,
+                    am: `${c.am} ${num}`,
+                    badgeEn: c.en,
+                    badgeAm: c.am
+                });
+            }
+        }
+
+        const PAGE_SIZE = 9;
+        let activeFilter = 'all';
+        let visibleCount = PAGE_SIZE;
+
+        let renderedCount = 0;
+
+        function renderGallery(append = false) {
+            const list = galleryItems.filter(i => activeFilter === 'all' || i.cat === activeFilter);
+            const grid = document.getElementById('galleryGrid');
+            if (!append) { grid.innerHTML = ''; renderedCount = 0; }
+            const html = list.slice(renderedCount, visibleCount).map(i => `
+                <div class="bg-cardBg border border-gray-800 rounded-2xl overflow-hidden group shadow-lg">
+                    <div class="relative h-64 overflow-hidden bg-gray-900">
+                        <img src="${i.src}" alt="${i.en}" loading="lazy" decoding="async"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/1e1e1e/ff6600?text=${encodeURIComponent(i.badgeEn)}'">
+                        <div class="absolute top-3 right-3 bg-darkBg/80 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-accent border border-gray-700"
+                             data-en="${i.badgeEn}" data-am="${i.badgeAm}">${currentLang === 'am' ? i.badgeAm : i.badgeEn}</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-base font-bold text-white" data-en="${i.en}" data-am="${i.am}">${currentLang === 'am' ? i.am : i.en}</h3>
+                    </div>
+                </div>`).join('');
+            grid.insertAdjacentHTML('beforeend', html);
+            renderedCount = Math.min(visibleCount, list.length);
+
+            document.getElementById('showMoreBtn').parentElement.style.display =
+                visibleCount < list.length ? 'block' : 'none';
+        }
+
+        document.getElementById('galleryFilters').addEventListener('click', e => {
+            const btn = e.target.closest('[data-filter]');
+            if (!btn) return;
+            activeFilter = btn.dataset.filter;
+            visibleCount = PAGE_SIZE;
+
+            const INACTIVE = ['bg-cardBg', 'hover:bg-gray-800', 'border', 'border-gray-700', 'text-gray-300'];
+            document.querySelectorAll('.gallery-filter-btn').forEach(b => {
+                b.classList.remove('bg-accent', 'text-white');
+                b.classList.add(...INACTIVE);
+            });
+            btn.classList.remove(...INACTIVE);
+            btn.classList.add('bg-accent', 'text-white');
+
+            renderGallery();
+        });
+
+        document.getElementById('showMoreBtn').addEventListener('click', () => {
+            visibleCount += PAGE_SIZE;
+            renderGallery(true);
+        });
+
+        /* ---------- Contact form (Formspree) ---------- */
+        const FORM_ENDPOINT = 'https://formspree.io/f/xaeeorgn';
+
+        function showToast(ok) {
+            const title = document.querySelector('#toast h4');
+            const msg = document.getElementById('toastMsg');
+            const t = ok
+                ? { en: ['Success!', 'Your message has been sent successfully.'],
+                    am: ['ተሳክቷል!', 'መልእክትዎ በተሳካ ሁኔታ ተልኳል።'] }
+                : { en: ['Not sent', 'Something went wrong. Please call us or message on Telegram.'],
+                    am: ['አልተላከም', 'ችግር ተፈጥሯል። እባክዎ ይደውሉልን ወይም በቴሌግራም ያነጋግሩን።'] };
+            title.setAttribute('data-en', t.en[0]); title.setAttribute('data-am', t.am[0]);
+            msg.setAttribute('data-en', t.en[1]);   msg.setAttribute('data-am', t.am[1]);
+            title.textContent = t[currentLang][0];
+            msg.textContent = t[currentLang][1];
+
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-28', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-28', 'opacity-0'), 5000);
+        }
+
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const btn = document.getElementById('submitBtn');
+            const originalLabel = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = currentLang === 'am' ? 'በመላክ ላይ...' : 'Sending...';
+
+            try {
+                const res = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.reset();
+                    showToast(true);
+                } else {
+                    showToast(false);
+                }
+            } catch (err) {
+                showToast(false);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalLabel;
+            }
+        }
+
+        /* ---------- Init ---------- */
+        renderGallery();
+        applyLanguage();
+    </script>
+</body>
+</html>
